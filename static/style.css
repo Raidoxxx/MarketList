@@ -1,0 +1,205 @@
+/* Reseta margens e padding básicos de todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Define uma fonte base e cor de fundo para o body */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  /* ====== CABEÇALHO E NAVEGAÇÃO ====== */
+  header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 2rem;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ffda79;
+  }
+  
+  /* ====== ÁREA PRINCIPAL (MAIN) ====== */
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+  
+  /* Títulos dentro do main */
+  main h1, main h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  
+  /* Parágrafos */
+  main p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Links dentro do main */
+  main a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    margin-right: 1rem;
+  }
+  
+  main a:hover {
+    color: #2980b9;
+  }
+  
+  /* ====== FORMULÁRIOS ====== */
+  form {
+    margin-bottom: 1rem;
+  }
+  
+  /* Estilização dos labels e inputs */
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Botões */
+  button[type="submit"],
+  form button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 3px;
+    background-color: #2c3e50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover,
+  form button:hover {
+    background-color: #3b4b5f;
+  }
+  
+  /* ====== LISTAS DE ITENS ====== */
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0;
+  }
+  
+  ul li {
+    background-color: #eef;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  ul li form {
+    display: inline;
+  }
+  
+  ul li form button {
+    background-color: #e74c3c; /* botões de ação dentro da lista (ex: remover) */
+    margin-left: 0.5rem;
+  }
+  
+  ul li form button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Para botões de "Ver" ou "Abrir", diferenciar cor se desejar */
+  ul li form button:last-of-type {
+    background-color: #2980b9;
+  }
+  ul li form button:last-of-type:hover {
+    background-color: #1f6393;
+  }
+  
+  /* ====== ALERTAS E MENSAGENS ====== */
+  /* Exemplo para as classes alert geradas pelos flashed_messages */
+  .alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+  }
+  
+  /* Ajuste de cores baseado na categoria: success, error, warning, info etc. */
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .alert-error,
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  .alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  .alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  footer {
+    position: fixed;     /* Mantém o rodapé fixo */
+    left: 0;             /* Alinha ao lado esquerdo */
+    bottom: 0;           /* Alinha no fundo da janela */
+    width: 100%;         /* Ocupa toda a largura da tela */
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  footer a:hover {
+    color: #ffda79;
+  }
+  

@@ -1,0 +1,57 @@
+<!-- templates/items.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Itens da Lista {{ lista.name if lista else list_id }}</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1>Itens da Lista: {{ lista.name if lista else list_id }}</h1>
+
+        <!-- Bloco de alerta -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
+        <!-- Formulário para adicionar um novo item à lista -->
+        <form action="{{ url_for('item_bp.create_item') }}" method="POST">
+            <!-- Envie também o list_id para que o novo item seja associado -->
+            <input type="hidden" name="list_id" value="{{ list_id }}">
+            <input type="text" name="item_name" placeholder="Nome do item">
+            <button type="submit">Adicionar Item</button>
+        </form>
+
+        <hr>
+
+        <!-- Lista de Itens -->
+        <ul>
+            {% for item in items %}
+                <li>
+                    <form action="{{ url_for('item_bp.toggle_item', item_id=item.id) }}" method="POST" style="display: inline;">
+                        <!-- Se item.check == 1, marcamos o checkbox -->
+                        <input type="checkbox" name="is_checked" 
+                            onchange="this.form.submit()" 
+                            {% if item.check %} checked {% endif %}>
+                        
+                        <!-- Mostra o nome do item ao lado ou como preferir -->
+                        <label>{{ item.name }}</label>
+                    </form>
+            
+                    <!-- Formulário para remover um item (você pode manter separado) -->
+                    <form action="{{ url_for('item_bp.delete_item', item_id=item.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">[Remover]</button>
+                    </form>
+                </li>
+            {% endfor %}
+            </ul>
+
+        <!-- Link para voltar às listas -->
+        <a href="{{ url_for('list_bp.list_lists') }}">Voltar para as listas</a>
+    {% endblock %}
+</body>
+</html>

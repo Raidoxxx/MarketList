@@ -1,0 +1,31 @@
+# === Python & Flask ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+
+# === Virtual Environments ===
+venv/
+.env/
+
+# === Logs e Debug ===
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# === IDEs e Ferramentas ===
+.vscode/
+.idea/
+*.swp
+
+# === Arquivos do Sistema ===
+.DS_Store
+Thumbs.db
+
+# === Outros que deseja ignorar ===
+app.zip
+discloud.config

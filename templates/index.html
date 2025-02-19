@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h1>Minha Marketlist</h1>
+        <p>Olá, seja bem-vindo ao Minha Marketlist!</p>
+        <p>Este é um aplicativo web para gerenciar listas de compras.</p>
+        
+        {% if current_user.is_authenticated %}
+            <p>Para começar, adicione uma lista.</p>
+        {% else %}
+            <p>Para começar, faça login ou crie uma conta.</p>
+
+            <a href="{{ url_for('user_bp.login') }}">Entrar</a>
+            <a href="{{ url_for('user_bp.create_user') }}">Registrar</a>
+        {% endif %}
+
+        {% if current_user.is_authenticated %}
+            <h2>Adicionar Lista</h2>
+            <form action="{{ url_for('list_bp.create_list')}}" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" name="list_name" id="nome">
+                <button type="submit">Adicionar</button>
+            </form>
+            <h2>Listas</h2>
+            <ul>
+                {% for list in lists %}
+                    <li>
+                        {{ list }}
+                        <form action="{{ url_for('list_bp.delete_list', index=loop.index0) }}" method="post" style="display:inline;">
+                            <button type="submit">Remover</button>
+                        </form>
+                        <form action="{{ url_for('list_bp.open_list', index=loop.index0) }}" method="get" style="display:inline;">
+                            <button type="submit">Ver</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}

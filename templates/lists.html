@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listas</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1>Minhas Listas</h1>
+        <!-- Bloco de alerta -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('list_bp.create_list') }}" method="POST">
+            <input type="text" name="list_name" placeholder="Nome da lista">
+            <button type="submit">Criar</button>
+        </form>
+        <hr>
+        <ul>
+            {% for lista in lists %}
+                <li>
+                    {{ lista.name }}
+                    <form action="{{ url_for('list_bp.delete_list', list_id=lista.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">[Remover]</button>
+                    </form>
+                <form action="{{ url_for('list_bp.open_list', list_id=lista.id) }}" method="GET" style="display:inline;">
+                    <button type="submit">[Abrir]</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>
